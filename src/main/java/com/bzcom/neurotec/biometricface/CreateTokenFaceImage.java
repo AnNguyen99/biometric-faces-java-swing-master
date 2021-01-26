@@ -68,7 +68,10 @@ public class CreateTokenFaceImage extends BasePanel implements ActionListener {
 
 	public CreateTokenFaceImage() {
 		super();
-		setName("Create token face image");
+//		setName("Create token face image");
+
+		//translate english to vietnamese
+		setName("Tạo hình ảnh khuôn mặt mã thông báo");
 
 		requiredLicenses.add("Biometrics.FaceDetection");
 		requiredLicenses.add("Biometrics.FaceSegmentation");
@@ -146,7 +149,8 @@ public class CreateTokenFaceImage extends BasePanel implements ActionListener {
 						lblOriginalImage = new JLabel();
 						lblOriginalImage.setBackground(SystemColor.activeCaption);
 						lblOriginalImage.setHorizontalAlignment(SwingConstants.CENTER);
-						lblOriginalImage.setText("Original face image");
+//						lblOriginalImage.setText("Original face image");
+						lblOriginalImage.setText("Hình ảnh khuôn mặt gốc");
 						lblOriginalImage.setToolTipText("");
 						lblOriginalImage.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
 						lblOriginalImage.setOpaque(true);
@@ -180,7 +184,8 @@ public class CreateTokenFaceImage extends BasePanel implements ActionListener {
 						lblTokenImage = new JLabel();
 						lblTokenImage.setBackground(SystemColor.activeCaption);
 						lblTokenImage.setHorizontalAlignment(SwingConstants.CENTER);
-						lblTokenImage.setText("Token face image");
+//						lblTokenImage.setText("Token face image");
+						lblTokenImage.setText("Hình ảnh khuôn mặt mã thông báo");
 						lblTokenImage.setToolTipText("");
 						lblTokenImage.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
 						lblTokenImage.setOpaque(true);
@@ -267,7 +272,8 @@ public class CreateTokenFaceImage extends BasePanel implements ActionListener {
 				panelMain.add(panelBottom, BorderLayout.PAGE_END);
 				{
 					btnSave = new JButton();
-					btnSave.setText("Save token image");
+//					btnSave.setText("Save token image");
+					btnSave.setText("Lưu hình ảnh mã thông báo");
 					btnSave.addActionListener(this);
 					panelBottom.add(btnSave);
 				}

@@ -30,11 +30,18 @@ public final class DetectFaces extends BasePanel implements ActionListener {
     // ===========================================================
 
     private static final long serialVersionUID = 1L;
-    private static final String PANEL_TITLE = "Detect faces";
+    /*private static final String PANEL_TITLE = "Detect faces";
     private static final String LOAD_IMAGE_BUTTON_TEXT = "Load image";
     private static final String MAX_ROLL_ANGLE_DEVIATION_LABEL_TEXT = "Roll angle deviation";
     private static final String MAX_YAW_ANGLE_DEVIATION_LABEL_TEXT = "Max yaw angle deviation";
-    private static final String DETECT_FACIAL_FEATURES_BUTTON_TEXT = "Detect facial features";
+    private static final String DETECT_FACIAL_FEATURES_BUTTON_TEXT = "Detect facial features";*/
+
+    //translate english to vietnamese
+    private static final String PANEL_TITLE = "Phát hiện khuôn mặt";
+    private static final String LOAD_IMAGE_BUTTON_TEXT = "Tải hình ảnh";
+    private static final String MAX_ROLL_ANGLE_DEVIATION_LABEL_TEXT = "Độ lệch góc cuộn";
+    private static final String MAX_YAW_ANGLE_DEVIATION_LABEL_TEXT = "Độ lệch góc hàm tối đa";
+    private static final String DETECT_FACIAL_FEATURES_BUTTON_TEXT = "Phát hiện các đặc điểm trên khuôn mặt";
 
     // ===========================================================
     // Private fields

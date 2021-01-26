@@ -30,8 +30,12 @@ public final class GeneralizeFace extends BasePanel implements ActionListener {
 	// Private static fields
 	// ===========================================================
 
-	private static final String PANEL_TITLE = "Generalize face";
 	private static final long serialVersionUID = 1L;
+
+//	private static final String PANEL_TITLE = "Generalize face";
+
+	//translate english to vietnamese
+	private static final String PANEL_TITLE = "Tổng quát khuôn mặt";
 
 	// ===========================================================
 	// Private fields

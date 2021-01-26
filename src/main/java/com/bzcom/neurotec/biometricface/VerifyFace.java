@@ -33,7 +33,7 @@ public final class VerifyFace extends BasePanel implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 
-	private static final String PANEL_TITLE = "Verify Face";
+	/*private static final String PANEL_TITLE = "Verify Face";
 	private static final String LOAD_LEFT_ITEM_BUTTON_TEXT = "Load left";
 	private static final String LOAD_RIGHT_ITEM_BUTTON_TEXT = "Load right";
 	private static final String MATCHING_FAR_PANEL_BORDER_TEXT = "Matching FAR: ";
@@ -46,6 +46,22 @@ public final class VerifyFace extends BasePanel implements ActionListener {
 
 	private static final String SUBJECT_LEFT = "left";
 	private static final String SUBJECT_RIGHT = "right";
+*/
+
+	//translate english to vietnamese
+	private static final String PANEL_TITLE = "Xác minh khuôn mặt";
+	private static final String LOAD_LEFT_ITEM_BUTTON_TEXT = "Tải bên trái";
+	private static final String LOAD_RIGHT_ITEM_BUTTON_TEXT = "Tải bên phải";
+	private static final String MATCHING_FAR_PANEL_BORDER_TEXT = "Phù hợp với FAR: ";
+	private static final String RESET_DEFAULT_BUTTON_TEXT = "Mặc định";
+	private static final String VERIFY_BUTTON_TEXT = "Kiểm chứng";
+	private static final String CLEAR_ITEMS_BUTTON_TEXT = "Xóa các mục";
+	private static final String LEFT_ITEM_LOCATION_LABEL_TEXT = "Mục trái: ";
+	private static final String RIGHT_ITEM_LOCATION_LABEL_TEXT = "Mục phải: ";
+	private static final String SCORE_LABEL_TEXT = "Score";
+
+	private static final String SUBJECT_LEFT = "trái";
+	private static final String SUBJECT_RIGHT = "phải";
 
 	private static final List<String> THRESHOLDS = new ArrayList<String>();
 

@@ -46,7 +46,7 @@ public final class EnrollFromCamera extends BasePanel implements ActionListener 
 
 	private static final long serialVersionUID = 1L;
 
-	private static final String PANEL_TITLE = "Enroll from camera";
+	/*private static final String PANEL_TITLE = "Enroll from camera";
 	private static final String REFRESH_LIST_BUTTON_TEXT = "Refresh list";
 	private static final String START_CAPTIRIN_BUTTON_TEXT = "Start capturing";
 	private static final String STOP_CAPTURING_BUTTON_TEXT = "Stop capturing";
@@ -54,8 +54,19 @@ public final class EnrollFromCamera extends BasePanel implements ActionListener 
 	private static final String START_EXTRACTION_BUTTON_TEXT = "Start extraction";
 	private static final String SAVE_TEMPLATE_BUTTON_TEXT = "Save template";
 	private static final String SAVE_IMAGE_BUTTON_TEXT = "Save image";
-	private static final int DEFAULT_STREAM_DURATION_IN_FRAMES_VALUE = 10;
+	private static final int DEFAULT_STREAM_DURATION_IN_FRAMES_VALUE = 10;*/
 
+
+	//translate english to vietnamese
+	private static final String PANEL_TITLE = "Đăng ký từ máy ảnh";
+	private static final String REFRESH_LIST_BUTTON_TEXT = "Làm mới danh sách";
+	private static final String START_CAPTIRIN_BUTTON_TEXT = "Bắt đầu chụp";
+	private static final String STOP_CAPTURING_BUTTON_TEXT = "Dừng chụp";
+	private static final String RESET_DEFAULTS_BUTTON_TEXT = "Mặc định";
+	private static final String START_EXTRACTION_BUTTON_TEXT = "Bắt đầu trích xuất";
+	private static final String SAVE_TEMPLATE_BUTTON_TEXT = "Lưu mẫu";
+	private static final String SAVE_IMAGE_BUTTON_TEXT = "Lưu hình ảnh";
+	private static final int DEFAULT_STREAM_DURATION_IN_FRAMES_VALUE = 10;
 	// ===========================================================
 	// Private fields
 	// ===========================================================

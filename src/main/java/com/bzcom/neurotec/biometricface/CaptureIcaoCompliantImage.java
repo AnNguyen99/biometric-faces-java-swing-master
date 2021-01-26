@@ -47,13 +47,22 @@ public final class CaptureIcaoCompliantImage extends BasePanel implements Action
 
 	private static final long serialVersionUID = 1L;
 
-	private static final String PANEL_TITLE = "Capture ICAO image";
+	/*private static final String PANEL_TITLE = "Capture ICAO image";
 	private static final String REFRESH_LIST_BUTTON_TEXT = "Refresh list";
 	private static final String START_CAPTIRIN_BUTTON_TEXT = "Start capturing";
 	private static final String STOP_CAPTURING_BUTTON_TEXT = "Stop capturing";
 	private static final String FORCE_BUTTON_TEXT = "Force";
 	private static final String SAVE_TEMPLATE_BUTTON_TEXT = "Save template";
-	private static final String SAVE_IMAGE_BUTTON_TEXT = "Save image";
+	private static final String SAVE_IMAGE_BUTTON_TEXT = "Save image";*/
+
+	//translate english to vietnamese
+	private static final String PANEL_TITLE = "Chụp ảnh ICAO";
+	private static final String REFRESH_LIST_BUTTON_TEXT = "Làm mới danh sách";
+	private static final String START_CAPTIRIN_BUTTON_TEXT = "Bắt đầu chụp";
+	private static final String STOP_CAPTURING_BUTTON_TEXT = "Dừng chụp";
+	private static final String FORCE_BUTTON_TEXT = "Lực lượng";
+	private static final String SAVE_TEMPLATE_BUTTON_TEXT = "Lưu mẫu";
+	private static final String SAVE_IMAGE_BUTTON_TEXT = "Lưu hình ảnh";
 
 	// ===========================================================
 	// Private fields

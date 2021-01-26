@@ -28,12 +28,21 @@ public final class MatchMultipleFaces extends BasePanel implements ActionListene
 
 	private static final long serialVersionUID = 1L;
 
-	private static final String PANEL_TITLE = "Match multiple Faces";
+	/*private static final String PANEL_TITLE = "Match multiple Faces";
 	private static final String OPEN_REFERENCE_IMAGE_BUTTON_TEXT = "Open reference image";
 	private static final String OPEN_MULTIPLE_FACE_IMAGE_BUTTON_TEXT = "Open multiple face image";
 
 	private static final String ATTACHMENT_REFERENCE = "reference";
-	private static final String ATTACHMENT_MULTIPLE_FACES = "multiple_faces";
+	private static final String ATTACHMENT_MULTIPLE_FACES = "multiple_faces";*/
+
+
+	//translate english to vietnamese
+	private static final String PANEL_TITLE = "Khớp nhiều khuôn mặt";
+	private static final String OPEN_REFERENCE_IMAGE_BUTTON_TEXT = "Mở hình ảnh tham chiếu";
+	private static final String OPEN_MULTIPLE_FACE_IMAGE_BUTTON_TEXT = "Mở hình ảnh nhiều khuôn mặt";
+
+	private static final String ATTACHMENT_REFERENCE = "tài liệu tham khảo";
+	private static final String ATTACHMENT_MULTIPLE_FACES = "nhiều khuôn mặt";
 
 	// ===========================================================
 	// Private fields

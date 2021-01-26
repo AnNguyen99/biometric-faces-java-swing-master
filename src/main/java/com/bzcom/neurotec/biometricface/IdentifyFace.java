@@ -33,7 +33,7 @@ public final class IdentifyFace extends BasePanel implements ActionListener {
 	// ===========================================================
 	private static final long serialVersionUID = 1L;
 
-	private static final String PANEL_TITLE = "Identify faces";
+	/*private static final String PANEL_TITLE = "Identify faces";
 	private static final String TEMPLATES_LOADING_PANEL_BORDER_TEXT = "Templates loading";
 	private static final String LOAD_TEMPLATE_BUTTON_TEXT = "Load template";
 	private static final String LOADED_TEMPLATES_LABEL_COUNT_LABEL_TEXT = "Loaded templates: ";
@@ -43,7 +43,20 @@ public final class IdentifyFace extends BasePanel implements ActionListener {
 	private static final String IDENTIFICATION_PANEL_BORDER_TEXT = "Identification";
 	private static final String IDENTIFY_BUTTON_TEXT = "Identify";
 	private static final String MATCHING_FAR_LABEL_TEXT = "Matching FAR: ";
-	private static final String RESET_DEFAULTS_BUTTON_TEXT = "Default";
+	private static final String RESET_DEFAULTS_BUTTON_TEXT = "Default";*/
+
+	//translate english to vietnamese
+	private static final String PANEL_TITLE = "Nhận dạng khuôn mặt";
+	private static final String TEMPLATES_LOADING_PANEL_BORDER_TEXT = "Đang tải mẫu";
+	private static final String LOAD_TEMPLATE_BUTTON_TEXT = "Chạy bản mẫu";
+	private static final String LOADED_TEMPLATES_LABEL_COUNT_LABEL_TEXT = "Đã tải mẫu: ";
+	private static final String LOADED_TEMPLATES_COUNT_TEXT = "Số lượng mẫu";
+	private static final String IMAGE_FOR_IDENTIFICATION_PANEL_BORDER_TEXT = "Hình ảnh / mẫu để nhận dạng";
+	private static final String OPEN_IMAGE_BUTTON_TEXT = "Mở";
+	private static final String IDENTIFICATION_PANEL_BORDER_TEXT = "Nhận biết";
+	private static final String IDENTIFY_BUTTON_TEXT = "Nhận định";
+	private static final String MATCHING_FAR_LABEL_TEXT = "Phù hợp với FAR: ";
+	private static final String RESET_DEFAULTS_BUTTON_TEXT = "Mặc định";
 
 	private static final List<String> THRESHOLDS = new ArrayList<String>();
 

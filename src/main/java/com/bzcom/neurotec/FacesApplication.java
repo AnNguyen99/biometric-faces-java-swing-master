@@ -83,7 +83,7 @@ public final class FacesApplication implements ChangeListener {
             public void run() {
                 JFrame frame = new JFrame();
                 try {
-                    Dimension dimension  = new Dimension(800, 600);
+                    Dimension dimension  = new Dimension(1000, 700);
 
                     frame.setSize(dimension);
                     frame.setMinimumSize(dimension);
@@ -91,8 +91,9 @@ public final class FacesApplication implements ChangeListener {
 
                     frame.setResizable(true);
                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    frame.setTitle("Biometric Faces App");
-                    frame.setIconImage(Utils.createIconImage("images/Logo16x16.png"));
+//                    frame.setTitle("Biometric Faces App");
+                    frame.setTitle("Ứng dụng nhận diện khuôn mặt bằng công nghệ sinh trắc học");
+                    frame.setIconImage(Utils.createIconImage("images/logo.png"));
 
                     tabbedPane = new JTabbedPane();
                     frame.add(tabbedPane);

@@ -36,14 +36,24 @@ public final class EnrollFromImage extends BasePanel implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 
-	private static final String PANEL_TITLE = "Enroll from image";
+	/*private static final String PANEL_TITLE = "Enroll from image";
 	private static final String LOAD_IMAGE_BUTTON_TEXT = "Load image";
 	private static final String SAVE_TEMPLATE_BUTTON_TEXT = "Save template";
 	private static final String EXTRACT_TEMPLATE = "Extract template";
 	private static final String MAX_ROLL_ANGLE_DEVIATION_LABEL_TEXT = "Roll angle deviation";
 	private static final String MAX_YAW_ANGLE_DEVIATION_LABEL_TEXT = "Max yaw angle deviation";
 	private static final String TEMPLATE_CREATION_SUCCEEDED_LABEL_TEXT = "Template extracted";
-	private static final String TEMPLATE_CREATION_FAILED_LABEL_TEXT = "Extraction failed";
+	private static final String TEMPLATE_CREATION_FAILED_LABEL_TEXT = "Extraction failed";*/
+
+	//translate english to vietnamese
+	private static final String PANEL_TITLE = "Đăng ký từ hình ảnh";
+	private static final String LOAD_IMAGE_BUTTON_TEXT = "Tải hình ảnh";
+	private static final String SAVE_TEMPLATE_BUTTON_TEXT = "Lưu mẫu";
+	private static final String EXTRACT_TEMPLATE = "Trích xuất mẫu";
+	private static final String MAX_ROLL_ANGLE_DEVIATION_LABEL_TEXT = "Độ lệch góc cuộn";
+	private static final String MAX_YAW_ANGLE_DEVIATION_LABEL_TEXT = "Độ lệch góc hàm tối đa";
+	private static final String TEMPLATE_CREATION_SUCCEEDED_LABEL_TEXT = "Đã trích xuất mẫu";
+	private static final String TEMPLATE_CREATION_FAILED_LABEL_TEXT = "Giải nén không thành công";
 
 	private static final Color TEMPLATE_CREATION_SUCCEEDED_LABEL_TEXT_COLOR = Color.green.darker();
 	private static final Color TEMPLATE_CREATION_FAILED_LABEL_TEXT_COLOR = Color.red.darker();
