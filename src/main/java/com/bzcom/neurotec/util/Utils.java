@@ -34,7 +34,8 @@ public final class Utils {
 	private static ImageIcon createImageIcon(String path) {
 		URL imgURL = Utils.class.getClassLoader().getResource(path);
 		if (imgURL == null) {
-			System.err.println("Couldn't find file: " + path);
+//			System.err.println("Couldn't find file: " + path);
+			System.err.println("Không thể tìm thấy tệp: " + path);
 			return null;
 		} else {
 			return new ImageIcon(imgURL);
@@ -50,19 +51,22 @@ public final class Utils {
 			}
 		} else {
 			System.out.println();
-			System.out.println("Failed to locate file: " + p.toString());
+//			System.out.println("Failed to locate file: " + p.toString());
+			System.out.println("Không xác định được tệp: " + p.toString());
 			System.out.println();
 		}
 		return DEFAULT_TRIAL_MODE;
 	}
 
 	public static void writeText(String pathname, String text) throws IOException {
-		if (text == null) throw new NullPointerException("text");
+//		if (text == null) throw new NullPointerException("text");
+		if (text == null) throw new NullPointerException("Văn bản");
 		File file = new File(pathname);
 		if (file.isAbsolute() && (file.getParentFile() != null)) {
 			file.getParentFile().mkdirs();
 		} else if (!file.exists() || !file.isFile()) {
-			throw new IllegalArgumentException("No such file: " + file.getAbsolutePath());
+//			throw new IllegalArgumentException("No such file: " + file.getAbsolutePath());
+			throw new IllegalArgumentException("Không có tệp như vậy: " + file.getAbsolutePath());
 		}
 		Writer writer = new FileWriter(file);
 		Closeable resource = writer;
@@ -307,10 +311,12 @@ public final class Utils {
 						FileUtils.copyInputStreamToFile(is, new File(outputFolder, file));
 					}
 				} else {
-					throw new IllegalStateException("Data directory is empty");
+//					throw new IllegalStateException("Data directory is empty");
+					throw new IllegalStateException("Thư mục dữ liệu trống");
 				}
 			} else {
-				throw new IllegalStateException("Data directory is not present inside the jar file");
+//				throw new IllegalStateException("Data directory is not present inside the jar file");
+				throw new IllegalStateException("Thư mục dữ liệu không có bên trong tệp jar");
 			}
 		}
 

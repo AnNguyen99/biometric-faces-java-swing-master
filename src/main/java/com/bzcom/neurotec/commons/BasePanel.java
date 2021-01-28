@@ -6,7 +6,6 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 //1
 public abstract class BasePanel extends JPanel {
     private static final long serialVersionUID = 1L;
@@ -51,7 +50,8 @@ public abstract class BasePanel extends JPanel {
     }
 
     public void showError(String message){
-        if (message == null) throw new NullPointerException("message");
+//        if (message == null) throw new NullPointerException("message");
+        if (message == null) throw new NullPointerException("Thông điệp");
         JOptionPane.showMessageDialog(this, message);
     }
 
@@ -60,13 +60,16 @@ public abstract class BasePanel extends JPanel {
 
         if (e instanceof AggregateExecutionException) {
             StringBuilder sb = new StringBuilder(64);
-            sb.append("Execution resulted in one or more errors:\n");
+//            sb.append("Execution resulted in one or more errors:\n");
+            sb.append("Việc thực thi dẫn đến một hoặc nhiều lỗi:\n");
             for (Throwable cause : ((AggregateExecutionException) e).getCauses()) {
                 sb.append(cause.toString()).append('\n');
             }
-            JOptionPane.showMessageDialog(this, sb.toString(), "Execution failed", JOptionPane.ERROR_MESSAGE);
+//            JOptionPane.showMessageDialog(this, sb.toString(), "Execution failed", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, sb.toString(), "Thực thi không thành công", JOptionPane.ERROR_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(this, e, "Error", JOptionPane.ERROR_MESSAGE);
+//            JOptionPane.showMessageDialog(this, e, "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e, "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }
 

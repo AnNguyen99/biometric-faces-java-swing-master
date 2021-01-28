@@ -109,7 +109,6 @@ public final class IdentifyFace extends BasePanel implements ActionListener {
 		super();
 		subjects = new ArrayList<NSubject>();
 		fc = new ImageThumbnailFileChooser();
-		fc.setIcon(Utils.createIconImage("images/Logo16x16.png"));
 		this.setName(PANEL_TITLE);
 
 		requiredLicenses.add("Biometrics.FaceExtraction");
@@ -149,7 +148,8 @@ public final class IdentifyFace extends BasePanel implements ActionListener {
 				FaceCollection faces = subject.getFaces();
 				if (faces.isEmpty()) {
 					subject = null;
-					throw new IllegalArgumentException("Template contains no face records.");
+//					throw new IllegalArgumentException("Template contains no face records.");
+					throw new IllegalArgumentException("Mẫu không chứa bản ghi khuôn mặt.");
 				}
 				face = faces.get(0);
 				templateCreationHandler.completed(NBiometricStatus.OK, null);
@@ -295,7 +295,8 @@ public final class IdentifyFace extends BasePanel implements ActionListener {
 					resultsTable = new JTable();
 					resultsTable.setModel(new DefaultTableModel(
 							new Object[][] {},
-							new String[] {"ID", "Score"}) {
+//							new String[] {"ID", "Score"}) {
+							new String[] {"ID", "Điểm"}) {
 
 						private final Class<?>[] types = new Class<?>[] {String.class, Integer.class};
 						private final boolean[] canEdit = new boolean[] {false, false};
@@ -340,7 +341,8 @@ public final class IdentifyFace extends BasePanel implements ActionListener {
 			e.printStackTrace();
 			FaceTools.getInstance().getClient().setMatchingThreshold(FaceTools.getInstance().getDefaultClient().getMatchingThreshold());
 			comboBoxMatchingFarThreshold.setSelectedItem(Utils.matchingThresholdToString(FaceTools.getInstance().getDefaultClient().getMatchingThreshold()));
-			JOptionPane.showMessageDialog(this, "FAR is not valid. Using default value.", "Error", JOptionPane.ERROR_MESSAGE);
+//			JOptionPane.showMessageDialog(this, "FAR is not valid. Using default value.", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this, "FAR không hợp lệ. Sử dụng giá trị mặc định.", "Lỗi", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -387,7 +389,8 @@ public final class IdentifyFace extends BasePanel implements ActionListener {
 		} catch (Exception e) {
 			e.printStackTrace();
 			updateControls();
-			JOptionPane.showMessageDialog(this, e.toString(), "Error", JOptionPane.ERROR_MESSAGE);
+//			JOptionPane.showMessageDialog(this, e.toString(), "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this, e.toString(), "Lỗi", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -414,7 +417,8 @@ public final class IdentifyFace extends BasePanel implements ActionListener {
 					updateControls();
 					if (status != NBiometricStatus.OK) {
 						setSubject(null);
-						JOptionPane.showMessageDialog(IdentifyFace.this, "Template was not created: " + status, "Error", JOptionPane.WARNING_MESSAGE);
+//						JOptionPane.showMessageDialog(IdentifyFace.this, "Template was not created: " + status, "Error", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(IdentifyFace.this, "Mẫu chưa được tạo: " + status, "Lỗi", JOptionPane.WARNING_MESSAGE);
 					}
 				}
 
@@ -445,7 +449,8 @@ public final class IdentifyFace extends BasePanel implements ActionListener {
 				// Identify current subject in enrolled ones.
 				FaceTools.getInstance().getClient().identify(getSubject(), null, identificationHandler);
 			} else {
-				JOptionPane.showMessageDialog(IdentifyFace.this, "Enrollment failed: " + task.getStatus(), "Error", JOptionPane.WARNING_MESSAGE);
+//				JOptionPane.showMessageDialog(IdentifyFace.this, "Enrollment failed: " + task.getStatus(), "Error", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(IdentifyFace.this, "Đăng ký không thành công: " + task.getStatus(), "Lỗi", JOptionPane.WARNING_MESSAGE);
 			}
 		}
 
@@ -489,7 +494,8 @@ public final class IdentifyFace extends BasePanel implements ActionListener {
 							}
 						}
 					} else {
-						JOptionPane.showMessageDialog(IdentifyFace.this, "Identification failed: " + status, "Error", JOptionPane.WARNING_MESSAGE);
+//						JOptionPane.showMessageDialog(IdentifyFace.this, "Identification failed: " + status, "Error", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(IdentifyFace.this, "Nhận dạng không thành công: " + status, "Lỗi", JOptionPane.WARNING_MESSAGE);
 					}
 				}
 

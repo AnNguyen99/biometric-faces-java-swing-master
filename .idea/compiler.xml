@@ -6,8 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="project-javaswing" />
         <module name="biometric-faces-java-swing-master" />
+        <module name="project-javaswing" />
+        <module name="biometric-faces-java-master" />
       </profile>
     </annotationProcessing>
   </component>

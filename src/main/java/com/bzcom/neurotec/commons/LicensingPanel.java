@@ -6,14 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-
 //2
 public final class LicensingPanel extends JPanel {
     private static final long serialVersionUID = 1L;
 
-    private static final String REQUIRED_COMPONENT_LICENSES_LABEL_TEXT = "Required component licenses: ";
+    /*private static final String REQUIRED_COMPONENT_LICENSES_LABEL_TEXT = "Required component licenses: ";
     private static final String COMPONENTS_OBTAINED_STATUS_TEXT = "Component licenses successfully obtained";
-    private static final String COMPONENTS_NOT_OBTAINED_STATUS_TEXT = "Component licenses not obtained";
+    private static final String COMPONENTS_NOT_OBTAINED_STATUS_TEXT = "Component licenses not obtained";*/
+
+    //translate english to vietnamese
+    private static final String REQUIRED_COMPONENT_LICENSES_LABEL_TEXT = "Giấy phép thành phần bắt buộc : ";
+    private static final String COMPONENTS_OBTAINED_STATUS_TEXT = "Giấy phép thành phần đã nhận được thành công";
+    private static final String COMPONENTS_NOT_OBTAINED_STATUS_TEXT = "Giấy phép thành phần không nhận được ";
 
     private static final Color COMPONENTS_OBTAINED_STATUS_TEXT_COLOR = Color.green.darker();
     private static final Color COMPONENTS_NOT_OBTAINED_STATUS_TEXT_COLOR = Color.red.darker();
@@ -52,6 +56,7 @@ public final class LicensingPanel extends JPanel {
     }
 
     private void init(){
+        setBackground(Color.WHITE);
         setBorder(BorderFactory.createLineBorder(Color.BLACK));
         {
             lblRequiredComponentLicenses = new JLabel(REQUIRED_COMPONENT_LICENSES_LABEL_TEXT);

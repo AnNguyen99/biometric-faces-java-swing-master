@@ -59,7 +59,7 @@ public final class DetectFaces extends BasePanel implements ActionListener {
     private NFaceView view;
     private NViewZoomSlider zoomSlider;
     private JScrollPane scrollPane;
-    private final ImageThumbnailFileChooser imageThumbnailFileChooser;
+    private final ImageThumbnailFileChooser fc;
 
     private final FaceDetectionHandler faceDetectionHandler = new FaceDetectionHandler();
 
@@ -73,8 +73,7 @@ public final class DetectFaces extends BasePanel implements ActionListener {
         requiredLicenses.add("Biometrics.FaceDetection");
         optionalLicenses.add("Biometrics.FaceSegmentsDetection");
 
-        imageThumbnailFileChooser = new ImageThumbnailFileChooser();
-        imageThumbnailFileChooser.setIcon(Utils.createIconImage("images/Logo16x16.png"));
+        fc = new ImageThumbnailFileChooser();
     }
 
     // ===========================================================
@@ -122,8 +121,8 @@ public final class DetectFaces extends BasePanel implements ActionListener {
     }
 
     private void openFile() throws IOException {
-        if (imageThumbnailFileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-            image = NImage.fromFile(imageThumbnailFileChooser.getSelectedFile().getAbsolutePath());
+        if (fc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            image = NImage.fromFile(fc.getSelectedFile().getAbsolutePath());
             detectFace(image);
         }
     }
@@ -257,7 +256,8 @@ public final class DetectFaces extends BasePanel implements ActionListener {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(this, e, "Error", JOptionPane.ERROR_MESSAGE);
+//            JOptionPane.showMessageDialog(this, e, "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e, "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }
 

@@ -143,7 +143,8 @@ public final class EnrollFromCamera extends BasePanel implements ActionListener 
 		lblStatus.setText("");
 		lblQuality.setText("");
 		if (FaceTools.getInstance().getClient().getFaceCaptureDevice() == null) {
-			JOptionPane.showMessageDialog(this, "Please select camera from the list.", "No camera selected", JOptionPane.PLAIN_MESSAGE);
+//			JOptionPane.showMessageDialog(this, "Please select camera from the list.", "No camera selected", JOptionPane.PLAIN_MESSAGE);
+			JOptionPane.showMessageDialog(this, "Vui lòng chọn máy ảnh từ danh sách.", "Không có máy ảnh nào được chọn", JOptionPane.PLAIN_MESSAGE);
 			return;
 		}
 		// Set face capture from stream.
@@ -173,7 +174,8 @@ public final class EnrollFromCamera extends BasePanel implements ActionListener 
 	}
 
 	private void startExtraction() {
-		lblStatus.setText("Extracting...");
+//		lblStatus.setText("Extracting...");
+		lblStatus.setText("Đang giải nén ...");
 		updateFacesTools();
 		FaceTools.getInstance().getClient().forceStart();
 	}
@@ -221,7 +223,8 @@ public final class EnrollFromCamera extends BasePanel implements ActionListener 
 					panelCameras = new JPanel();
 					panelCameras.setLayout(new BorderLayout());
 					panelCameras.setPreferredSize(new Dimension(560, 75));
-					panelCameras.setBorder(BorderFactory.createTitledBorder("Cameras"));
+//					panelCameras.setBorder(BorderFactory.createTitledBorder("Cameras"));
+					panelCameras.setBorder(BorderFactory.createTitledBorder("Máy ảnh"));
 					panelControls.add(panelCameras);
 					{
 						comboBoxCameras = new JComboBox();
@@ -247,11 +250,13 @@ public final class EnrollFromCamera extends BasePanel implements ActionListener 
 							panelCameraControls.add(btnStopCapturing);
 						}
 						{
-							cbAutomatic = new JCheckBox("Capture automatically");
+//							cbAutomatic = new JCheckBox("Capture automatically");
+							cbAutomatic = new JCheckBox("Chụp tự động");
 							panelCameraControls.add(cbAutomatic);
 						}
 						{
-							cbCheckLiveness = new JCheckBox("Check liveness");
+//							cbCheckLiveness = new JCheckBox("Check liveness");
+							cbCheckLiveness = new JCheckBox("Kiểm tra độ trực tiếp");
 							panelCameraControls.add(cbCheckLiveness);
 						}
 					}
@@ -344,7 +349,8 @@ public final class EnrollFromCamera extends BasePanel implements ActionListener 
 	void updateStatus(String status) {
 		lblStatus.setText(status);
 		if (status.equals("OK")){
-			lblQuality.setText(String.format("Quality: %d", (subject.getFaces().get(0).getObjects().get(0).getQuality() & 0xFF)));
+//			lblQuality.setText(String.format("Quality: %d", (subject.getFaces().get(0).getObjects().get(0).getQuality() & 0xFF)));
+			lblQuality.setText(String.format("Chất lượng: %d", (subject.getFaces().get(0).getObjects().get(0).getQuality() & 0xFF)));
 		}
 	}
 
@@ -374,7 +380,8 @@ public final class EnrollFromCamera extends BasePanel implements ActionListener 
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(this, e.toString(), "Error", JOptionPane.ERROR_MESSAGE);
+//			JOptionPane.showMessageDialog(this, e.toString(), "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this, e.toString(), "Lỗi", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 

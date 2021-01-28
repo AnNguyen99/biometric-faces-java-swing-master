@@ -58,10 +58,10 @@ public final class VerifyFace extends BasePanel implements ActionListener {
 	private static final String CLEAR_ITEMS_BUTTON_TEXT = "Xóa các mục";
 	private static final String LEFT_ITEM_LOCATION_LABEL_TEXT = "Mục trái: ";
 	private static final String RIGHT_ITEM_LOCATION_LABEL_TEXT = "Mục phải: ";
-	private static final String SCORE_LABEL_TEXT = "Score";
+	private static final String SCORE_LABEL_TEXT = "Điểm";
 
-	private static final String SUBJECT_LEFT = "trái";
-	private static final String SUBJECT_RIGHT = "phải";
+	private static final String SUBJECT_LEFT = "Trái";
+	private static final String SUBJECT_RIGHT = "Phải";
 
 	private static final List<String> THRESHOLDS = new ArrayList<String>();
 
@@ -126,12 +126,9 @@ public final class VerifyFace extends BasePanel implements ActionListener {
 	public VerifyFace() {
 		super();
 		this.setName(PANEL_TITLE);
-
 		requiredLicenses.add("Biometrics.FaceExtraction");
 		requiredLicenses.add("Biometrics.FaceMatching");
-
 		fc = new ImageThumbnailFileChooser();
-		fc.setIcon(Utils.createIconImage("images/Logo16x16.png"));
 
 		subjectLeft = new NSubject();
 		subjectRight = new NSubject();
@@ -152,7 +149,8 @@ public final class VerifyFace extends BasePanel implements ActionListener {
 				FaceCollection faces = subjectTmp.getFaces();
 				if (faces.isEmpty()) {
 					subjectTmp = null;
-					throw new IllegalArgumentException("Template contains no face records.");
+//					throw new IllegalArgumentException("Template contains no face records.");
+					throw new IllegalArgumentException("Mẫu không chứa bản ghi khuôn mặt.");
 				}
 				face = faces.get(0);
 				templateCreationHandler.completed(NBiometricStatus.OK, position);
@@ -179,7 +177,8 @@ public final class VerifyFace extends BasePanel implements ActionListener {
 				lblRightItemLocation.setText(fc.getSelectedFile().getAbsolutePath());
 				viewRight.setFace(face);
 			} else {
-				throw new AssertionError("Unknown subject position: " + position);
+//				throw new AssertionError("Unknown subject position: " + position);
+				throw new AssertionError("Vị trí chủ đề không xác định: " + position);
 			}
 		}
 	}
@@ -266,6 +265,7 @@ public final class VerifyFace extends BasePanel implements ActionListener {
 				panelLeft.add(leftZoomSliderPanel, BorderLayout.SOUTH);
 				{
 					leftZoomSlider = new NViewZoomSlider();
+//					JCheckBox jCheckBox = new JCheckBox("thu phóng");
 					leftZoomSlider.setView(viewLeft);
 					leftZoomSliderPanel.add(leftZoomSlider, BorderLayout.WEST);
 				}
@@ -379,7 +379,8 @@ public final class VerifyFace extends BasePanel implements ActionListener {
 			e.printStackTrace();
 			FaceTools.getInstance().getClient().setMatchingThreshold(FaceTools.getInstance().getDefaultClient().getMatchingThreshold());
 			comboBoxMatchingFarThreshold.setSelectedItem(Utils.matchingThresholdToString(FaceTools.getInstance().getDefaultClient().getMatchingThreshold()));
-			JOptionPane.showMessageDialog(this, "FAR is not valid. Using default value.", "Error", JOptionPane.ERROR_MESSAGE);
+//			JOptionPane.showMessageDialog(this, "FAR is not valid. Using default value.", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this, "FAR không hợp lệ. Sử dụng giá trị mặc định.", "Lỗi", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -419,7 +420,7 @@ public final class VerifyFace extends BasePanel implements ActionListener {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(this, e, "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this, e, "Lỗi", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -445,7 +446,8 @@ public final class VerifyFace extends BasePanel implements ActionListener {
 				@Override
 				public void run() {
 					if (status != NBiometricStatus.OK) {
-						JOptionPane.showMessageDialog(VerifyFace.this, "Template was not created: " + status, "Error", JOptionPane.WARNING_MESSAGE);
+//						JOptionPane.showMessageDialog(VerifyFace.this, "Template was not created: " + status, "Error", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(VerifyFace.this, "Mẫu chưa được tạo: " + status, "lỗi", JOptionPane.WARNING_MESSAGE);
 					}
 					updateControls();
 				}
@@ -477,11 +479,14 @@ public final class VerifyFace extends BasePanel implements ActionListener {
 				public void run() {
 					if (status == NBiometricStatus.OK) {
 						int score = getLeft().getMatchingResults().get(0).getScore();
-						String msg = "Score of matched templates: " + score;
+//						String msg = "Score of matched templates: " + score;
+						String msg = "Điểm của các mẫu phù hợp: " + score;
 						updateLabel(msg);
-						JOptionPane.showMessageDialog(VerifyFace.this, msg, "Match", JOptionPane.PLAIN_MESSAGE);
+//						JOptionPane.showMessageDialog(VerifyFace.this, msg, "Match", JOptionPane.PLAIN_MESSAGE);
+						JOptionPane.showMessageDialog(VerifyFace.this, msg, "Khớp với nhau", JOptionPane.PLAIN_MESSAGE);
 					} else {
-						JOptionPane.showMessageDialog(VerifyFace.this, "Templates didn't match.", "No match", JOptionPane.WARNING_MESSAGE);
+//						JOptionPane.showMessageDialog(VerifyFace.this, "Templates didn't match.", "No match", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(VerifyFace.this, "Các mẫu không khớp.", "Không khớp", JOptionPane.WARNING_MESSAGE);
 					}
 				}
 

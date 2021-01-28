@@ -2,11 +2,11 @@ package com.bzcom.neurotec.commons;
 
 import com.neurotec.biometrics.client.NBiometricClient;
 import com.neurotec.licensing.NLicense;
-//3
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//3
 public final class FaceTools {
 
 	private static final String ADDRESS = "/local";
@@ -35,7 +35,8 @@ public final class FaceTools {
 
 	private boolean obtain(String address, String port, List<String> licenses) throws Exception {
 		if (licenses == null) {
-			throw new RuntimeException("Null license list");
+//			throw new RuntimeException("Null license list");
+			throw new RuntimeException("Danh sách giấy phép trống");
 		}
 
 		boolean result = true;
@@ -43,9 +44,10 @@ public final class FaceTools {
 			if (!isLicenseObtained(license)) {
 				boolean state = NLicense.obtainComponents(address, port, license);
 				obtainedLicenses.put(license, state);
-				System.out.println(license + ": " + (state ? "obtainted" : "not obtained"));
+//				System.out.println(license + ": " + (state ? "obtainted" : "not obtained"));
+				System.out.println(license + ": " + (state ? "Đạt được" : "không đạt được"));
 			} else {
-				System.out.println(license + ": " + " already obtained");
+				System.out.println(license + ": " + "đã đạt được");
 			}
 		}
 		return result;

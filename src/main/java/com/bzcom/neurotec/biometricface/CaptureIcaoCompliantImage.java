@@ -138,7 +138,8 @@ public final class CaptureIcaoCompliantImage extends BasePanel implements Action
 		lblStatus.setText("");
 		updateFacesTools();
 		if (FaceTools.getInstance().getClient().getFaceCaptureDevice() == null) {
-			JOptionPane.showMessageDialog(this, "Please select camera from the list.", "No camera selected", JOptionPane.PLAIN_MESSAGE);
+//			JOptionPane.showMessageDialog(this, "Please select camera from the list.", "No camera selected", JOptionPane.PLAIN_MESSAGE);
+			JOptionPane.showMessageDialog(this, "Vui lòng chọn máy ảnh từ danh sách .", "Không có máy ảnh nào được chọn ", JOptionPane.PLAIN_MESSAGE);
 			return;
 		}
 		// Set face capture from stream.
@@ -207,7 +208,8 @@ public final class CaptureIcaoCompliantImage extends BasePanel implements Action
 					panelCameras = new JPanel();
 					panelCameras.setLayout(new BorderLayout());
 					panelCameras.setPreferredSize(new Dimension(560, 75));
-					panelCameras.setBorder(BorderFactory.createTitledBorder("Cameras"));
+//					panelCameras.setBorder(BorderFactory.createTitledBorder("Cameras"));
+					panelCameras.setBorder(BorderFactory.createTitledBorder("Máy ảnh"));
 					panelControls.add(panelCameras);
 					{
 						comboBoxCameras = new JComboBox();
@@ -347,7 +349,8 @@ public final class CaptureIcaoCompliantImage extends BasePanel implements Action
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(this, e.toString(), "Error", JOptionPane.ERROR_MESSAGE);
+//			JOptionPane.showMessageDialog(this, e.toString(), "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this, e.toString(), "Lỗi", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 

@@ -110,7 +110,7 @@ public class IcaoWarningsPanel extends JPanel {
 		setLayout(new BorderLayout());
 		panelWarnings.setLayout(new BoxLayout(panelWarnings, BoxLayout.Y_AXIS));
 		
-		lblFaceDetected = createLabelAndAdd("Face Detected", panelWarnings, labels);
+		/*lblFaceDetected = createLabelAndAdd("Face Detected", panelWarnings, labels);
 		lblExpression = createLabelAndAdd("Expression", panelWarnings, labels);
 		lblDarkGlasses = createLabelAndAdd("Dark Glasses", panelWarnings, labels);
 		lblBlink = createLabelAndAdd("Blink", panelWarnings, labels);
@@ -135,14 +135,41 @@ public class IcaoWarningsPanel extends JPanel {
 		lblSharpness = createLabelAndAdd("Sharpness", panelWarnings, labels);
 		lblGrayscaleDensity = createLabelAndAdd("Grayscale Density", panelWarnings, labels);
 		lblSaturation = createLabelAndAdd("Saturation", panelWarnings, labels);
-		lblBackgroundUniformity = createLabelAndAdd("Background Uniformity", panelWarnings, labels);
+		lblBackgroundUniformity = createLabelAndAdd("Background Uniformity", panelWarnings, labels);*/
+
+		lblFaceDetected = createLabelAndAdd("Nhận diện khuôn mặt", panelWarnings, labels);
+		lblExpression = createLabelAndAdd("Biểu hiện", panelWarnings, labels);
+		lblDarkGlasses = createLabelAndAdd("Kính râm", panelWarnings, labels);
+		lblBlink = createLabelAndAdd("Chớp mắt", panelWarnings, labels);
+		lblMouthOpen = createLabelAndAdd("Mở miệng", panelWarnings, labels);
+		lblLookingAway = createLabelAndAdd("Nhìn xa ", panelWarnings, labels);
+		lblRedEye = createLabelAndAdd("Mắt đỏ", panelWarnings, labels);
+		lblFaceDarkness = createLabelAndAdd("Mặt tối", panelWarnings, labels);
+		lblUnnaturalSkinTone = createLabelAndAdd("Màu da không tự nhiên", panelWarnings, labels);
+		lblColorsWashedOut = createLabelAndAdd("Màu sắc được rửa sạch", panelWarnings, labels);
+		lblPixelation = createLabelAndAdd("Điểm ảnh", panelWarnings, labels);
+		lblSkinReflection = createLabelAndAdd("Phản xạ da", panelWarnings, labels);
+		lblGlassesReflection = createLabelAndAdd("Kính phản chiếu", panelWarnings, labels);
+		lblRoll = createLabelAndAdd("Cuộn", panelWarnings, labels);
+		lblYaw = createLabelAndAdd("ngáp", panelWarnings, labels);
+		lblPitch = createLabelAndAdd("Sân cỏ", panelWarnings, labels);
+		lblTooClose = createLabelAndAdd("Quá gần", panelWarnings, labels);
+		lblTooFar = createLabelAndAdd("Quá xa", panelWarnings, labels);
+		lblTooNorth = createLabelAndAdd("Quá Bắc", panelWarnings, labels);
+		lblTooSouth = createLabelAndAdd("Quá Nam", panelWarnings, labels);
+		lblTooWest = createLabelAndAdd("Quá Tây", panelWarnings, labels);
+		lblTooEast = createLabelAndAdd("Quá đông", panelWarnings, labels);
+		lblSharpness = createLabelAndAdd("Độ sắc nét", panelWarnings, labels);
+		lblGrayscaleDensity = createLabelAndAdd("Mật độ thang độ xám", panelWarnings, labels);
+		lblSaturation = createLabelAndAdd("Bão hòa", panelWarnings, labels);
+		lblBackgroundUniformity = createLabelAndAdd("Nền đồng nhất", panelWarnings, labels);
 
 		add(panelWarnings, BorderLayout.WEST);
 	}
 
 	private JLabel createLabelAndAdd(String labelText, JPanel panel, Set<JLabel> labels) {
 		JLabel label = new JLabel();
-		label.setFont(new Font("Tahoma", 1, 9)); // NOI18N
+		label.setFont(new Font("Arial", 1, 11)); // NOI18N
 		label.setText(labelText);
 		panel.add(label);
 		labels.add(label);
@@ -226,10 +253,14 @@ public class IcaoWarningsPanel extends JPanel {
 				updateLabel(lblTooSouth, getColor(warnings, NICAOWarning.TOO_SOUTH));
 				updateLabel(lblTooWest, getColor(warnings, NICAOWarning.TOO_WEST));
 				updateLabel(lblTooEast, getColor(warnings, NICAOWarning.TOO_EAST));
-				updateLabel(lblSharpness, getColor(warnings, NICAOWarning.SHARPNESS), getConfidenceString("Sharpness", attributes.getSharpness() & 0xFF));
-				updateLabel(lblSaturation, getColor(warnings, NICAOWarning.SATURATION), getConfidenceString("Saturation", attributes.getSaturation() & 0xFF));
-				updateLabel(lblGrayscaleDensity, getColor(warnings, NICAOWarning.GRAYSCALE_DENSITY), getConfidenceString("Grayscale Density", attributes.getGrayscaleDensity() & 0xFF));
-				updateLabel(lblBackgroundUniformity, getColor(warnings, NICAOWarning.BACKGROUND_UNIFORMITY), getConfidenceString("Background Uniformity", attributes.getBackgroundUniformity() & 0xFF));
+//				updateLabel(lblSharpness, getColor(warnings, NICAOWarning.SHARPNESS), getConfidenceString("Sharpness", attributes.getSharpness() & 0xFF));
+				updateLabel(lblSharpness, getColor(warnings, NICAOWarning.SHARPNESS), getConfidenceString("Độ sắc nét", attributes.getSharpness() & 0xFF));
+//				updateLabel(lblSaturation, getColor(warnings, NICAOWarning.SATURATION), getConfidenceString("Saturation", attributes.getSaturation() & 0xFF));
+				updateLabel(lblSaturation, getColor(warnings, NICAOWarning.SATURATION), getConfidenceString("Bão hòa", attributes.getSaturation() & 0xFF));
+//				updateLabel(lblGrayscaleDensity, getColor(warnings, NICAOWarning.GRAYSCALE_DENSITY), getConfidenceString("Grayscale Density", attributes.getGrayscaleDensity() & 0xFF));
+				updateLabel(lblGrayscaleDensity, getColor(warnings, NICAOWarning.GRAYSCALE_DENSITY), getConfidenceString("Mật độ thang độ xám", attributes.getGrayscaleDensity() & 0xFF));
+//				updateLabel(lblBackgroundUniformity, getColor(warnings, NICAOWarning.BACKGROUND_UNIFORMITY), getConfidenceString("Background Uniformity", attributes.getBackgroundUniformity() & 0xFF));
+				updateLabel(lblBackgroundUniformity, getColor(warnings, NICAOWarning.BACKGROUND_UNIFORMITY), getConfidenceString("Nền đồng nhất", attributes.getBackgroundUniformity() & 0xFF));
 			}
 		}
 		repaint();

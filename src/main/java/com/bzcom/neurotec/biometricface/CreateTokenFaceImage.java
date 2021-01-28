@@ -78,7 +78,6 @@ public class CreateTokenFaceImage extends BasePanel implements ActionListener {
 		requiredLicenses.add("Biometrics.FaceQualityAssessment");
 
 		fc = new ImageThumbnailFileChooser();
-		fc.setIcon(Utils.createIconImage("images/Logo16x16.png"));
 	}
 
 	// ===========================================================
@@ -97,10 +96,14 @@ public class CreateTokenFaceImage extends BasePanel implements ActionListener {
 
 	private void showTokenAttributes() {
 		NLAttributes attributes = tokenFace.getObjects().get(0);
-		lblQuality.setText("Quality: " + attributes.getQuality());
+		/*lblQuality.setText("Quality: " + attributes.getQuality());
 		lblSharpness.setText("Sharpness score: " + attributes.getSharpness());
 		lblBackground.setText("Background uniformity score: " + attributes.getBackgroundUniformity());
-		lblDensity.setText("Grayscale density score: " + attributes.getGrayscaleDensity());
+		lblDensity.setText("Grayscale density score: " + attributes.getGrayscaleDensity());*/
+		lblQuality.setText("Chất lượng: " + attributes.getQuality());
+		lblSharpness.setText("Điểm độ sắc nét: " + attributes.getSharpness());
+		lblBackground.setText("Điểm đồng nhất của nền: " + attributes.getBackgroundUniformity());
+		lblDensity.setText("Điểm mật độ thang độ xám: " + attributes.getGrayscaleDensity());
 	}
 
 	private void showAttributeLabels(boolean show) {
@@ -132,7 +135,8 @@ public class CreateTokenFaceImage extends BasePanel implements ActionListener {
 				panelMain.add(panelTop, BorderLayout.NORTH);
 				{
 					btnOpen = new JButton();
-					btnOpen.setText("Open image");
+//					btnOpen.setText("Open image");
+					btnOpen.setText("Mở hình ảnh ");
 					btnOpen.addActionListener(this);
 					panelTop.add(btnOpen);
 				}
@@ -147,7 +151,7 @@ public class CreateTokenFaceImage extends BasePanel implements ActionListener {
 					panelCenter.add(panelOriginalImage);
 					{
 						lblOriginalImage = new JLabel();
-						lblOriginalImage.setBackground(SystemColor.activeCaption);
+						lblOriginalImage.setBackground(SystemColor.GREEN);
 						lblOriginalImage.setHorizontalAlignment(SwingConstants.CENTER);
 //						lblOriginalImage.setText("Original face image");
 						lblOriginalImage.setText("Hình ảnh khuôn mặt gốc");
@@ -182,7 +186,7 @@ public class CreateTokenFaceImage extends BasePanel implements ActionListener {
 					panelCenter.add(panelTokenImage);
 					{
 						lblTokenImage = new JLabel();
-						lblTokenImage.setBackground(SystemColor.activeCaption);
+						lblTokenImage.setBackground(SystemColor.GREEN);
 						lblTokenImage.setHorizontalAlignment(SwingConstants.CENTER);
 //						lblTokenImage.setText("Token face image");
 						lblTokenImage.setText("Hình ảnh khuôn mặt mã thông báo");
@@ -208,7 +212,8 @@ public class CreateTokenFaceImage extends BasePanel implements ActionListener {
 								panelTokenImageView.add(panelImageLabels);
 								{
 									lblQuality = new JLabel();
-									lblQuality.setText("Quality: ");
+//									lblQuality.setText("Quality: ");
+									lblQuality.setText("Chất lượng: ");
 									lblQuality.setOpaque(true);
 									gridBagConstraints = new GridBagConstraints();
 									gridBagConstraints.gridx = 1;
@@ -218,7 +223,8 @@ public class CreateTokenFaceImage extends BasePanel implements ActionListener {
 								}
 								{
 									lblSharpness = new JLabel();
-									lblSharpness.setText("Sharpness score: ");
+//									lblSharpness.setText("Sharpness score: ");
+									lblSharpness.setText("Điểm độ sắc nét: ");
 									lblSharpness.setOpaque(true);
 									gridBagConstraints = new GridBagConstraints();
 									gridBagConstraints.gridx = 1;
@@ -228,7 +234,8 @@ public class CreateTokenFaceImage extends BasePanel implements ActionListener {
 								}
 								{
 									lblBackground = new JLabel();
-									lblBackground.setText("Background uniformity score: ");
+//									lblBackground.setText("Background uniformity score: ");
+									lblBackground.setText("Điểm đồng nhất của nền: ");
 									lblBackground.setOpaque(true);
 									gridBagConstraints = new GridBagConstraints();
 									gridBagConstraints.gridx = 1;
@@ -238,7 +245,8 @@ public class CreateTokenFaceImage extends BasePanel implements ActionListener {
 								}
 								{
 									lblDensity = new JLabel();
-									lblDensity.setText("Grayscale density score: ");
+//									lblDensity.setText("Grayscale density score: ");
+									lblDensity.setText("Điểm mật độ thang độ xám: ");
 									lblDensity.setOpaque(true);
 									gridBagConstraints = new GridBagConstraints();
 									gridBagConstraints.gridx = 1;
@@ -324,7 +332,8 @@ public class CreateTokenFaceImage extends BasePanel implements ActionListener {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(this, e.toString(), "Error", JOptionPane.ERROR_MESSAGE);
+//			JOptionPane.showMessageDialog(this, e.toString(), "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this, e.toString(), "Lỗi", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -346,7 +355,8 @@ public class CreateTokenFaceImage extends BasePanel implements ActionListener {
 						viewTokenImage.setFace(tokenFace);
 						showTokenAttributes();
 					} else {
-						JOptionPane.showMessageDialog(CreateTokenFaceImage.this, "Could not create token face image. Status: " + status);
+//						JOptionPane.showMessageDialog(CreateTokenFaceImage.this, "Could not create token face image. Status: " + status);
+						JOptionPane.showMessageDialog(CreateTokenFaceImage.this, "Không thể tạo hình ảnh khuôn mặt mã thông báo. Trạng thái: " + status);
 						tokenFace = null;
 						viewTokenImage.setFace(null);
 					}

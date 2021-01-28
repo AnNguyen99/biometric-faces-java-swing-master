@@ -115,7 +115,8 @@ public final class ImageThumbnailFileChooser extends JFileChooser {
 				try {
 					UIManager.setLookAndFeel(old);
 				} catch (UnsupportedLookAndFeelException e) {
-					throw new AssertionError("Can't happen");
+//					throw new AssertionError("Can't happen");
+					throw new AssertionError("Không thể xảy ra");
 				}
 			}
 		} else {

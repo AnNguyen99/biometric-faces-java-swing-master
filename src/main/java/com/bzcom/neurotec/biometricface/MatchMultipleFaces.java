@@ -83,7 +83,6 @@ public final class MatchMultipleFaces extends BasePanel implements ActionListene
 		requiredLicenses.add("Biometrics.FaceMatching");
 
 		fc = new ImageThumbnailFileChooser();
-		fc.setIcon(Utils.createIconImage("images/Logo16x16.png"));
 	}
 
 	// ===========================================================
@@ -278,7 +277,8 @@ public final class MatchMultipleFaces extends BasePanel implements ActionListene
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+//			JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, e, "Lỗi", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -306,7 +306,8 @@ public final class MatchMultipleFaces extends BasePanel implements ActionListene
 				} else if (ATTACHMENT_MULTIPLE_FACES.equals(subject)) {
 					enrollMultipleFacesSubject();
 				} else {
-					throw new AssertionError("Unknown attachment: " + subject);
+//					throw new AssertionError("Unknown attachment: " + subject);
+					throw new AssertionError("Tệp đính kèm không xác định: " + subject);
 				}
 			} else {
 				if (ATTACHMENT_REFERENCE.equals(subject)) {
@@ -314,9 +315,11 @@ public final class MatchMultipleFaces extends BasePanel implements ActionListene
 				} else if (ATTACHMENT_MULTIPLE_FACES.equals(subject)) {
 					setMultipleFaces(null);
 				} else {
-					throw new AssertionError("Unknown attachment: " + subject);
+//					throw new AssertionError("Unknown attachment: " + subject);
+					throw new AssertionError("Tệp đính kèm không xác định: " + subject);
 				}
-				JOptionPane.showMessageDialog(MatchMultipleFaces.this, "Template was not created: " + status, "Error", JOptionPane.WARNING_MESSAGE);
+//				JOptionPane.showMessageDialog(MatchMultipleFaces.this, "Template was not created: " + status, "Error", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(MatchMultipleFaces.this, "Mẫu chưa được tạo: " + status, "Lỗi", JOptionPane.WARNING_MESSAGE);
 			}
 		}
 
@@ -338,7 +341,8 @@ public final class MatchMultipleFaces extends BasePanel implements ActionListene
 					FaceTools.getInstance().getClient().identify(getReference(), null, identificationHandler);
 				}
 			} else {
-				JOptionPane.showMessageDialog(MatchMultipleFaces.this, "Enrollment failed: " + task.getStatus(), "Error", JOptionPane.WARNING_MESSAGE);
+//				JOptionPane.showMessageDialog(MatchMultipleFaces.this, "Enrollment failed: " + task.getStatus(), "Error", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(MatchMultipleFaces.this, "Đăng ký không thành công: " + task.getStatus(), "Lỗi", JOptionPane.WARNING_MESSAGE);
 			}
 		}
 
@@ -366,11 +370,12 @@ public final class MatchMultipleFaces extends BasePanel implements ActionListene
 						for (NMatchingResult result : getReference().getMatchingResults()) {
 							int score = result.getScore();
 							if (result.getId().equals(getMultipleFaces().getId())) {
-								results[0] = String.format("Score: %d (match)", score);
+//								results[0] = String.format("Score: %d (match)", score);
+								results[0] = String.format("Điểm: %d (Khớp)", score);
 							} else {
 								for (int j = 0; j < getMultipleFaces().getRelatedSubjects().size(); j++) {
 									if (result.getId().equals(getMultipleFaces().getRelatedSubjects().get(j).getId())) {
-										results[j + 1] = String.format("Score: %d (match)", score);
+										results[j + 1] = String.format("Điểm: %d (Khớp)", score);
 									}
 								}
 							}
@@ -379,12 +384,14 @@ public final class MatchMultipleFaces extends BasePanel implements ActionListene
 						// All not matched faces have score 0.
 						for (int i = 0; i < results.length; i++) {
 							if (results[i] == null) {
-								results[i] = "Score: 0";
+//								results[i] = "Score: 0";
+								results[i] = "Điểm: 0";
 							}
 						}
 						setScores(results);
 					} else {
-						JOptionPane.showMessageDialog(MatchMultipleFaces.this, "Identification failed: " + status, "Error", JOptionPane.WARNING_MESSAGE);
+//						JOptionPane.showMessageDialog(MatchMultipleFaces.this, "Identification failed: " + status, "Error", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(MatchMultipleFaces.this, "Nhận dạng không thành công: " + status, "Lỗi", JOptionPane.WARNING_MESSAGE);
 					}
 				}
 

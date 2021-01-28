@@ -101,8 +101,6 @@ public final class EnrollFromImage extends BasePanel implements ActionListener {
 		optionalLicenses.add("Biometrics.FaceSegmentsDetection");
 
 		fc = new ImageThumbnailFileChooser();
-		fc.setIcon(Utils.createIconImage("images/Logo16x16.png"));
-
 	}
 
 	// ===========================================================
@@ -145,7 +143,8 @@ public final class EnrollFromImage extends BasePanel implements ActionListener {
 
 	private void updateTemplateCreationStatus(boolean created) {
 		if (created) {
-			lblQuality.setText(String.format("Quality: %d", (subject.getFaces().get(0).getObjects().get(0).getQuality() & 0xFF)));
+//			lblQuality.setText(String.format("Quality: %d", (subject.getFaces().get(0).getObjects().get(0).getQuality() & 0xFF)));
+			lblQuality.setText(String.format("Chất lượng: %d", (subject.getFaces().get(0).getObjects().get(0).getQuality() & 0xFF)));
 			lblTemplateCreationStatus.setText(TEMPLATE_CREATION_SUCCEEDED_LABEL_TEXT);
 			lblTemplateCreationStatus.setForeground(TEMPLATE_CREATION_SUCCEEDED_LABEL_TEXT_COLOR);
 			btnSaveTemplate.setEnabled(true);
@@ -339,7 +338,8 @@ public final class EnrollFromImage extends BasePanel implements ActionListener {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(this, e.toString(), "Error", JOptionPane.ERROR_MESSAGE);
+//			JOptionPane.showMessageDialog(this, e.toString(), "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this, e.toString(), "Lỗi", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -366,7 +366,8 @@ public final class EnrollFromImage extends BasePanel implements ActionListener {
 					if (result == NBiometricStatus.OK) {
 						updateTemplateCreationStatus(true);
 					} else if (result == NBiometricStatus.BAD_OBJECT) {
-						JOptionPane.showMessageDialog(EnrollFromImage.this, "Face image quality is too low.");
+//						JOptionPane.showMessageDialog(EnrollFromImage.this, "Face image quality is too low.");
+						JOptionPane.showMessageDialog(EnrollFromImage.this, "Chất lượng hình ảnh khuôn mặt quá thấp.");
 						updateTemplateCreationStatus(false);
 					} else {
 						JOptionPane.showMessageDialog(EnrollFromImage.this, result);

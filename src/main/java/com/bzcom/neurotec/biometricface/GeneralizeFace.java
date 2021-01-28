@@ -14,6 +14,8 @@ import com.neurotec.images.NImages;
 import com.neurotec.io.NFile;
 import com.neurotec.swing.NViewZoomSlider;
 import com.neurotec.util.concurrent.CompletionHandler;
+import com.sun.org.slf4j.internal.Logger;
+import com.sun.org.slf4j.internal.LoggerFactory;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -26,6 +28,7 @@ import java.io.IOException;
 //6
 public final class GeneralizeFace extends BasePanel implements ActionListener {
 
+	Logger logger = LoggerFactory.getLogger(GeneralizeFace.class);
 	// ===========================================================
 	// Private static fields
 	// ===========================================================
@@ -91,7 +94,8 @@ public final class GeneralizeFace extends BasePanel implements ActionListener {
 				subject.getFaces().add(face);
 			}
 			lblImageCount.setText(String.valueOf(files.length));
-			lblStatus.setText("Status: performing extraction and generalization");
+//			lblStatus.setText("Status: performing extraction and generalization");
+			lblStatus.setText("Trạng thái: đang thực hiện trích xuất và tổng quát hóa");
 			lblStatus.setVisible(true);
 			updateControls();
 			updateFacesTools();
@@ -127,15 +131,18 @@ public final class GeneralizeFace extends BasePanel implements ActionListener {
 			panelNorth.add(licensing);
 			{
 				actionButtonsPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-				actionButtonsPanel.setBorder(new TitledBorder(null, "Load face images", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+//				actionButtonsPanel.setBorder(new TitledBorder(null, "Load face images", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				actionButtonsPanel.setBorder(new TitledBorder(null, "Tải hình ảnh khuôn mặt ", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 				panelNorth.add(actionButtonsPanel);
 				{
-					btnOpenImage = new JButton("Open image");
+//					btnOpenImage = new JButton("Open image");
+					btnOpenImage = new JButton("Mở hình ảnh");
 					btnOpenImage.addActionListener(this);
 					actionButtonsPanel.add(btnOpenImage);
 				}
 				{
-					lblImagesLoaded = new JLabel("Images loaded:");
+//					lblImagesLoaded = new JLabel("Images loaded:");
+					lblImagesLoaded = new JLabel("Hình ảnh được tải :");
 					actionButtonsPanel.add(lblImagesLoaded);
 				}
 				{
@@ -166,13 +173,15 @@ public final class GeneralizeFace extends BasePanel implements ActionListener {
 					saveTemplatePanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 					panelSouth.add(saveTemplatePanel, BorderLayout.WEST);
 					{
-						btnSaveTemplate = new JButton("Save template");
+//						btnSaveTemplate = new JButton("Save template");
+						btnSaveTemplate = new JButton("Lưu mẫu ");
 						btnSaveTemplate.setEnabled(false);
 						btnSaveTemplate.addActionListener(this);
 						saveTemplatePanel.add(btnSaveTemplate);
 					}
 					{
-						lblStatus = new JLabel("Status: None");
+//						lblStatus = new JLabel("Status: None");
+						lblStatus = new JLabel("Tình trạng: Không có ");
 						saveTemplatePanel.add(lblStatus);
 					}
 				}
@@ -186,12 +195,10 @@ public final class GeneralizeFace extends BasePanel implements ActionListener {
 		}
 
 		fcOpen = new ImageThumbnailFileChooser();
-		fcOpen.setIcon(Utils.createIconImage("images/Logo16x16.png"));
 		fcOpen.setFileFilter(new Utils.ImageFileFilter(NImages.getOpenFileFilter()));
 		fcOpen.setMultiSelectionEnabled(true);
 		fcSaveTemplate = new JFileChooser();
 		fcSave = new ImageThumbnailFileChooser();
-		fcSave.setIcon(Utils.createIconImage("images/Logo16x16.png"));
 		fcSave.setFileFilter(new Utils.ImageFileFilter(NImages.getSaveFileFilter()));
 	}
 
@@ -238,11 +245,13 @@ public final class GeneralizeFace extends BasePanel implements ActionListener {
 				@Override
 				public void run() {
 					if (status == NBiometricStatus.OK) {
-						lblStatus.setText("Status: OK");
+//						lblStatus.setText("Status: OK");
+						lblStatus.setText("Trạng thái: OK");
 						btnSaveTemplate.setEnabled(true);
 						faceView.setFace(subject.getFaces().get(subject.getFaces().size() - 1));
 					} else {
-						lblStatus.setText(String.format("Status: %s", status));
+//						lblStatus.setText(String.format("Status: %s", status));
+						lblStatus.setText(String.format("Trạng thái: %s", status));
 					}
 					btnOpenImage.setEnabled(true);
 				}
@@ -254,7 +263,8 @@ public final class GeneralizeFace extends BasePanel implements ActionListener {
 			SwingUtilities.invokeLater(new Runnable() {
 				@Override
 				public void run() {
-					lblStatus.setText("Status: Error occurred");
+//					lblStatus.setText("Status: Error occurred");
+					lblStatus.setText("Trạng thái: Đã xảy ra lỗi");
 					showError(th);
 					btnOpenImage.setEnabled(true);
 				}

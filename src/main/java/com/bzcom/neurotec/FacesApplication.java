@@ -21,6 +21,12 @@ import java.util.logging.Logger;
 public final class FacesApplication implements ChangeListener {
 
     // ===========================================================
+    // Private static fields
+    // ===========================================================
+
+    private static final String FRAME_TITLE = "Ứng dụng nhận diện khuôn mặt bằng công nghệ sinh trắc học";
+
+    // ===========================================================
     // Static constructor
     // ===========================================================
 
@@ -28,7 +34,8 @@ public final class FacesApplication implements ChangeListener {
         try {
             javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
-            Logger.getLogger(Logger.getLogger("global").getName()).log(Level.FINE, e.getMessage(), e);
+//            Logger.getLogger(Logger.getLogger("global").getName()).log(Level.FINE, e.getMessage(), e);
+            Logger.getLogger(Logger.getLogger("toàn cầu").getName()).log(Level.FINE, e.getMessage(), e);
         }
     }
 
@@ -70,10 +77,19 @@ public final class FacesApplication implements ChangeListener {
         // Also you can just set TRUE to "TrialMode" property in code.
         //=========================================================================
 
+        // ================================================ =========================
+        // CHẾ ĐỘ THỬ NGHIỆM
+        // ================================================ =========================
+        // Dòng mã bên dưới xác định xem TRIAL có được bật hay không. Để sử dụng giấy phép đã mua, không sử dụng dòng mã bên dưới.
+        // Phương thức GetTrialModeFlag () nhận giá trị từ tệp "Bin / Licenses / TrialFlag.txt". Vì vậy, để dễ dàng thay đổi chế độ cho tất cả các ví dụ của chúng tôi, hãy sửa đổi tệp đó.
+        // Ngoài ra, bạn có thể đặt TRUE thành thuộc tính "TrialMode" trong mã.
+        // ================================================ =========================
+
         try {
             boolean trialMode = Utils.getTrialModeFlag();
             NLicenseManager.setTrialMode(trialMode);
-            System.out.println("\tTrial mode: " + trialMode);
+//            System.out.println("\tTrial mode: " + trialMode);
+            System.out.println("\tChế độ thử nghiệm: " + trialMode);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -83,7 +99,7 @@ public final class FacesApplication implements ChangeListener {
             public void run() {
                 JFrame frame = new JFrame();
                 try {
-                    Dimension dimension  = new Dimension(1000, 700);
+                    Dimension dimension  = new Dimension(900, 700);
 
                     frame.setSize(dimension);
                     frame.setMinimumSize(dimension);
@@ -91,13 +107,13 @@ public final class FacesApplication implements ChangeListener {
 
                     frame.setResizable(true);
                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    frame.setResizable(false);
 //                    frame.setTitle("Biometric Faces App");
-                    frame.setTitle("Ứng dụng nhận diện khuôn mặt bằng công nghệ sinh trắc học");
+                    frame.setTitle(FRAME_TITLE);
                     frame.setIconImage(Utils.createIconImage("images/logo.png"));
 
                     tabbedPane = new JTabbedPane();
                     frame.add(tabbedPane);
-
                     addTabs(tabbedPane);
 
                     frame.addWindowListener(new WindowAdapter() {
@@ -121,6 +137,7 @@ public final class FacesApplication implements ChangeListener {
     // ===========================================================
 
     private void addTabs(JTabbedPane tabbedPane) {
+        tabbedPane.setBackground(Color.WHITE);
         tabbedPane.addChangeListener(this::stateChanged);
 
         panelDetectFaces = new DetectFaces();
@@ -168,18 +185,24 @@ public final class FacesApplication implements ChangeListener {
         } else if (e.getCause() != null) {
             message = e.getCause().getMessage();
         } else {
-            message = "An error occurred. Please see log for more details.";
+//            message = "An error occurred. Please see log for more details.";
+            message = "Đã xảy ra lỗi. Vui lòng xem nhật ký để biết thêm chi tiết.";
         }
-        JOptionPane.showMessageDialog(parentComponent, message, "Error", JOptionPane.ERROR_MESSAGE);
+//        JOptionPane.showMessageDialog(parentComponent, message, "Error", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(parentComponent, message, "Lỗi", JOptionPane.ERROR_MESSAGE);
     }
 
     private void dispose() {
-        for (Component component : tabbedPane.getComponents()) {
-            if (component instanceof BasePanel) {
-                ((BasePanel) component).onDestroy();
+        try {
+            for (Component component : tabbedPane.getComponents()) {
+                if (component instanceof BasePanel) {
+                    ((BasePanel) component).onDestroy();
+                }
             }
+            NCore.shutdown();
+        } catch (Exception e){
+            new RuntimeException("Thao tác không hợp lệ" + e);
         }
-        NCore.shutdown();
     }
 
     // ===========================================================
@@ -195,43 +218,62 @@ public final class FacesApplication implements ChangeListener {
             try {
                 switch (tabbedPane.getSelectedIndex()) {
                     case 0:
+                        System.out.println("Start: " + panelDetectFaces.getName());
                         obtainLicenses(panelDetectFaces);
                         FaceTools.getInstance().resetParameters();
+                        System.out.println();
                         break;
                     case 1:
+                        System.out.println("Start: " + panelEnrollFromImage.getName());
                         obtainLicenses(panelEnrollFromImage);
                         FaceTools.getInstance().resetParameters();
+                        System.out.println();
                         break;
                     case 2:
+                        System.out.println("Start: " + panelEnrollFromCamera.getName());
                         obtainLicenses(panelEnrollFromCamera);
                         FaceTools.getInstance().resetParameters();
+                        System.out.println();
                         break;
                     case 3:
+                        System.out.println("Start: " + panelIdentifyFace.getName());
                         obtainLicenses(panelIdentifyFace);
                         FaceTools.getInstance().resetParameters();
+                        System.out.println();
                         break;
                     case 4:
+                        System.out.println("Start: " + panelVerifyFace.getName());
                         obtainLicenses(panelVerifyFace);
                         FaceTools.getInstance().resetParameters();
+                        System.out.println();
                         break;
                     case 5:
+                        System.out.println("Start: " + panelMatchMultipleFaces.getName());
                         obtainLicenses(panelMatchMultipleFaces);
                         FaceTools.getInstance().resetParameters();
+                        System.out.println();
                         break;
                     case 6:
+                        System.out.println("Start: " + panelCreateTokenFaceImage.getName());
                         obtainLicenses(panelCreateTokenFaceImage);
                         FaceTools.getInstance().resetParameters();
+                        System.out.println();
                         break;
                     case 7:
+                        System.out.println("Start: " + panelGeneralizeFace.getName());
                         obtainLicenses(panelGeneralizeFace);
                         FaceTools.getInstance().resetParameters();
+                        System.out.println();
                         break;
                     case 8:
+                        System.out.println("Start: " + panelcaptureIcaoCompliantImage.getName());
                         obtainLicenses(panelcaptureIcaoCompliantImage);
                         FaceTools.getInstance().resetParameters();
+                        System.out.println();
                         break;
                     default:
-                        throw new IndexOutOfBoundsException("unreachable");
+//                        throw new IndexOutOfBoundsException("unreachable");
+                        throw new IndexOutOfBoundsException("không thể tiếp cận ");
                 }
             } catch (Exception e) {
                 showError(null, e);
